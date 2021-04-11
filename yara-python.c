@@ -1695,7 +1695,6 @@ static PyObject* Rules_match(
           handle_error(error, "<data>");
         }
 
-        #ifdef YR_PROFILING_ENABLED
         PyObject* exception = PyErr_Occurred();
 
         if (exception != NULL && error == ERROR_SCAN_TIMEOUT)
@@ -1705,7 +1704,6 @@ static PyObject* Rules_match(
               "profiling_info",
               Rules_profiling_info(self, NULL));
         }
-        #endif
       }
 
       return NULL;
@@ -1781,7 +1779,6 @@ static PyObject* Rules_profiling_info(
     PyObject* args)
 {
 
-#ifdef YR_PROFILING_ENABLED
   PyObject* object;
   PyObject* result;
 
@@ -1811,9 +1808,6 @@ static PyObject* Rules_profiling_info(
   }
 
   return result;
-#else
-  return PyErr_Format(YaraError, "libyara compiled without profiling support");
-#endif
 }
 
 
