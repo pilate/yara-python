@@ -1695,7 +1695,7 @@ static PyObject* Rules_match(
           handle_error(error, "<data>");
         }
 
-        #ifdef PROFILING_ENABLED
+        #ifdef YR_PROFILING_ENABLED
         PyObject* exception = PyErr_Occurred();
 
         if (exception != NULL && error == ERROR_SCAN_TIMEOUT)
@@ -1781,7 +1781,7 @@ static PyObject* Rules_profiling_info(
     PyObject* args)
 {
 
-#ifdef PROFILING_ENABLED
+#ifdef YR_PROFILING_ENABLED
   PyObject* object;
   PyObject* result;
 
